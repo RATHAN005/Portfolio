@@ -98,10 +98,10 @@ function App() {
               <a className="primary-btn" href="#projects" onClick={handleNavClick('projects')}>
                 View projects
               </a>
-              <a className="ghost-btn" href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+              <a className="ghost-btn" href="https://www.linkedin.com/in/rathan-k-52747b292/" target="_blank" rel="noreferrer">
                 <i className="ri-linkedin-box-fill" /> LinkedIn
               </a>
-              <a className="ghost-btn" href="https://github.com" target="_blank" rel="noreferrer">
+              <a className="ghost-btn" href="https://github.com/RATHAN005" target="_blank" rel="noreferrer">
                 <i className="ri-github-fill" /> GitHub
               </a>
             </div>
