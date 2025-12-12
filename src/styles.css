@@ -378,7 +378,6 @@ ul {
 
 .card.highlight {
   border-color: rgba(124, 58, 237, 0.4);
-  box-shadow: var(--glow);
 }
 
 .card:hover,
