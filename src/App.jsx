@@ -422,10 +422,10 @@ function App() {
               <div className="meta-item">
                 <span className="label">Profiles</span>
                 <div className="profile-links">
-                  <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+                  <a href="https://www.linkedin.com/in/rathan-k-52747b292/" target="_blank" rel="noreferrer">
                     <i className="ri-linkedin-box-fill" />
                   </a>
-                  <a href="https://github.com" target="_blank" rel="noreferrer">
+                  <a href="https://github.com/RATHAN005" target="_blank" rel="noreferrer">
                     <i className="ri-github-fill" />
                   </a>
                 </div>
