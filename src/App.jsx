@@ -98,6 +98,15 @@ function App() {
               <a className="primary-btn" href="#projects" onClick={handleNavClick('projects')}>
                 View projects
               </a>
+              <a
+                className="ghost-btn"
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                download
+              >
+                <i className="ri-file-text-line" /> Resume (view/download)
+              </a>
               <a className="ghost-btn" href="https://www.linkedin.com/in/rathan-k-52747b292/" target="_blank" rel="noreferrer">
                 <i className="ri-linkedin-box-fill" /> LinkedIn
               </a>
