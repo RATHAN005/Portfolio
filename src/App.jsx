@@ -100,7 +100,7 @@ function App() {
               </a>
               <a
                 className="ghost-btn"
-                href="/resume.pdf"
+                href="/Rathan_K_Resume.pdf"
                 target="_blank"
                 rel="noreferrer"
                 download
