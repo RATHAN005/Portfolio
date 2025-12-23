@@ -13,6 +13,7 @@ const navItems = [
 function App() {
   const [navOpen, setNavOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('top')
+  const [resumeOpen, setResumeOpen] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -98,15 +99,12 @@ function App() {
               <a className="primary-btn" href="#projects" onClick={handleNavClick('projects')}>
                 View projects
               </a>
-              <a
+              <button
                 className="ghost-btn"
-                href="/Rathan_K_Resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-                download
+                onClick={() => setResumeOpen(true)}
               >
                 <i className="ri-file-text-line" /> Resume (view/download)
-              </a>
+              </button>
               <a className="ghost-btn" href="https://www.linkedin.com/in/rathan-k-52747b292/" target="_blank" rel="noreferrer">
                 <i className="ri-linkedin-box-fill" /> LinkedIn
               </a>
@@ -450,6 +448,40 @@ function App() {
           <i className="ri-arrow-up-line" />
         </a>
       </footer>
+
+      {resumeOpen && (
+        <div className="resume-modal-overlay" onClick={() => setResumeOpen(false)}>
+          <div className="resume-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="resume-modal-header">
+              <h3>Resume</h3>
+              <div className="resume-modal-actions">
+                <a
+                  href="/Rathan_K_Resume.pdf"
+                  download
+                  className="ghost-btn"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <i className="ri-download-line" /> Download
+                </a>
+                <button
+                  className="ghost-btn"
+                  onClick={() => setResumeOpen(false)}
+                  aria-label="Close"
+                >
+                  <i className="ri-close-line" />
+                </button>
+              </div>
+            </div>
+            <div className="resume-modal-content">
+              <iframe
+                src="/Rathan_K_Resume.pdf"
+                title="Resume"
+                className="resume-iframe"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
