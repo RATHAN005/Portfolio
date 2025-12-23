@@ -34,12 +34,113 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(124, 58, 237, 0.2), transparent 52%),
+    radial-gradient(circle at 82% 18%, rgba(34, 211, 238, 0.2), transparent 52%),
+    radial-gradient(circle at 20% 82%, rgba(124, 58, 237, 0.18), transparent 55%),
+    radial-gradient(circle at 78% 82%, rgba(34, 211, 238, 0.18), transparent 55%);
+  animation: backgroundDrift 22s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: -10%;
+  background:
+    linear-gradient(135deg, rgba(124, 58, 237, 0.14), transparent 60%),
+    linear-gradient(315deg, rgba(34, 211, 238, 0.14), transparent 60%);
+  mix-blend-mode: screen;
+  filter: blur(110px);
+  opacity: 0.85;
+  animation: sweepSoft 26s linear infinite;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .page {
   max-width: 1200px;
   margin: 0 auto;
   padding: 28px 24px 64px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Floating particle field */
+.page::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 6% 10%, rgba(124, 58, 237, 0.6), transparent),
+    radial-gradient(2px 2px at 18% 24%, rgba(34, 211, 238, 0.55), transparent),
+    radial-gradient(2px 2px at 32% 16%, rgba(124, 58, 237, 0.55), transparent),
+    radial-gradient(2px 2px at 46% 12%, rgba(34, 211, 238, 0.55), transparent),
+    radial-gradient(2px 2px at 62% 18%, rgba(124, 58, 237, 0.55), transparent),
+    radial-gradient(2px 2px at 78% 14%, rgba(34, 211, 238, 0.6), transparent),
+    radial-gradient(2px 2px at 90% 22%, rgba(124, 58, 237, 0.55), transparent),
+    radial-gradient(2px 2px at 10% 42%, rgba(34, 211, 238, 0.55), transparent),
+    radial-gradient(2px 2px at 24% 52%, rgba(124, 58, 237, 0.55), transparent),
+    radial-gradient(2px 2px at 38% 46%, rgba(34, 211, 238, 0.55), transparent),
+    radial-gradient(2px 2px at 52% 58%, rgba(124, 58, 237, 0.55), transparent),
+    radial-gradient(2px 2px at 66% 48%, rgba(34, 211, 238, 0.55), transparent),
+    radial-gradient(2px 2px at 82% 56%, rgba(124, 58, 237, 0.55), transparent),
+    radial-gradient(2px 2px at 12% 70%, rgba(34, 211, 238, 0.55), transparent),
+    radial-gradient(2px 2px at 30% 78%, rgba(124, 58, 237, 0.55), transparent),
+    radial-gradient(2px 2px at 48% 82%, rgba(34, 211, 238, 0.55), transparent),
+    radial-gradient(2px 2px at 64% 74%, rgba(124, 58, 237, 0.55), transparent),
+    radial-gradient(2px 2px at 80% 84%, rgba(34, 211, 238, 0.55), transparent),
+    radial-gradient(2px 2px at 92% 70%, rgba(124, 58, 237, 0.55), transparent),
+    radial-gradient(1px 1px at 22% 36%, rgba(34, 211, 238, 0.45), transparent),
+    radial-gradient(1px 1px at 54% 32%, rgba(124, 58, 237, 0.45), transparent),
+    radial-gradient(1px 1px at 72% 44%, rgba(34, 211, 238, 0.45), transparent),
+    radial-gradient(1px 1px at 40% 66%, rgba(124, 58, 237, 0.45), transparent),
+    radial-gradient(1px 1px at 68% 62%, rgba(34, 211, 238, 0.45), transparent),
+    radial-gradient(1px 1px at 58% 88%, rgba(124, 58, 237, 0.45), transparent);
+  background-size: 240% 240%;
+  animation: particleDrift 28s ease-in-out infinite;
+  opacity: 0.9;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes backgroundDrift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(18px, -18px) scale(1.05);
+  }
+}
+
+@keyframes sweepSoft {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.06);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes particleDrift {
+  0%, 100% {
+    background-position: 0% 0%, 100% 0%, 50% 50%, 0% 100%, 100% 100%, 50% 0%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 100%, 50% 50%, 100% 0%, 0% 0%, 50% 100%;
+  }
 }
 
 a {

@@ -152,6 +152,7 @@ function App() {
                 <span className="chip">AWS</span>
                 <span className="chip">MediaPipe</span>
                 <span className="chip">Blender</span>
+                <span className="chip">UI/UX Designer</span>
               </div>
               <a className="primary-btn block" href="#contact" onClick={handleNavClick('contact')}>
                 Collaborate
