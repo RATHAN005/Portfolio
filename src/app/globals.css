@@ -1,26 +1,162 @@
 @import "tailwindcss";
 
+/* ──────────────────────────────────────────────
+   Design Tokens — Black / White / Orange only
+   ────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary:   #0a0a0a;
+  --bg-surface:   #111111;
+  --bg-elevated:  #1a1a1a;
+
+  --accent:       #e8734a;       /* orange */
+  --accent-dim:   rgba(232,115,74,0.5);
+
+  --text-primary:   #f5f5f5;
+  --text-secondary: rgba(245,245,245,0.5);
+  --text-muted:     rgba(245,245,245,0.25);
+
+  --border:         rgba(255,255,255,0.08);
+  --border-accent:  rgba(232,115,74,0.25);
+
+  /* Font families */
+  --font-display: var(--font-syne),   "Syne",   system-ui, sans-serif;
+  --font-body:    var(--font-manrope),"Manrope", system-ui, sans-serif;
 }
 
+/* ──────────────────────────────────────────────
+   Tailwind v4 theme tokens
+   ────────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --color-surface:    var(--bg-surface);
+  --color-elevated:   var(--bg-elevated);
+  --color-accent:     var(--accent);
+  --color-border:     var(--border);
+  --color-ring:       var(--accent);
+  --font-sans:        "Inter", system-ui, -apple-system, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ──────────────────────────────────────────────
+   Base Styles
+   ────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body), "Manrope", "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ──────────────────────────────────────────────
+   Selection
+   ────────────────────────────────────────────── */
+::selection        { background: rgba(232,115,74,0.25); color: #fff; }
+::-moz-selection   { background: rgba(232,115,74,0.25); color: #fff; }
+
+/* ──────────────────────────────────────────────
+   Custom Scrollbar
+   ────────────────────────────────────────────── */
+::-webkit-scrollbar               { width: 4px; }
+::-webkit-scrollbar-track         { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb         { background: rgba(232,115,74,0.3); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover   { background: rgba(232,115,74,0.5); }
+*                                 { scrollbar-width: thin; scrollbar-color: rgba(232,115,74,0.3) var(--bg-primary); }
+
+/* ──────────────────────────────────────────────
+   Loading bar shimmer
+   ────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.loader-bar {
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ──────────────────────────────────────────────
+   Ticker / marquee
+   ────────────────────────────────────────────── */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-ticker { animation: ticker 25s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker { animation: none; }
+}
+
+/* ──────────────────────────────────────────────
+   Blinking cursor
+   ────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: "█";
+  animation: blink 1s step-end infinite;
+  color: var(--accent);
+}
+
+/* ──────────────────────────────────────────────
+   Typography utilities
+   ────────────────────────────────────────────── */
+.chapter-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+.body-copy {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+/* Orange accent text — only orange, no other colors */
+.text-accent {
+  color: var(--accent);
+}
+
+/* ──────────────────────────────────────────────
+   Chapter section base
+   ────────────────────────────────────────────── */
+.chapter-section {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ──────────────────────────────────────────────
+   Reduced motion
+   ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-layer     { transform: none !important; }
+  .cursor-blink::after{ animation: none; }
+  .animate-ticker     { animation: none; }
 }

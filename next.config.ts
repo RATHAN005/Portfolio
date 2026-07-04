@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",        // Static HTML export for GitHub Pages
+  trailingSlash: true,     // Needed for GitHub Pages routing
+  images: {
+    unoptimized: true,     // Required for static export (no Image Optimization server)
+  },
 };
 
 export default nextConfig;
