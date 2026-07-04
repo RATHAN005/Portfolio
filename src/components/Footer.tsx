@@ -76,7 +76,7 @@ export default function Footer() {
         {/* Orange top border line */}
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "var(--accent)" }} />
 
-        <div ref={ref} className="relative z-10 w-full h-full flex flex-col justify-between min-h-[100svh] px-6 sm:px-10 lg:px-16 py-20">
+        <div ref={ref} className="relative z-10 w-full h-full flex flex-col justify-between min-h-[100svh] px-4 sm:px-10 lg:px-16 py-20">
 
           {/* Top row — label */}
           <motion.p

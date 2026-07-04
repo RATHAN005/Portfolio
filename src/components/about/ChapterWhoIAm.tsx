@@ -17,7 +17,7 @@ export default function ChapterWhoIAm() {
       style={{ background: "var(--bg-primary)", minHeight: "100svh" }}
     >
       <motion.div
-        className="relative z-10 w-full px-6 sm:px-10 lg:px-16 py-20 flex flex-col justify-center"
+        className="relative z-10 w-full px-4 sm:px-10 lg:px-16 py-20 flex flex-col justify-center"
         style={{ y }}
       >
         {/* Overline */}

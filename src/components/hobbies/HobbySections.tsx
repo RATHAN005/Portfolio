@@ -24,7 +24,7 @@ function HobbySection({ id, label, line1, line2, accentLine, body1, body2, bg = 
       className="chapter-section flex-col justify-center overflow-hidden"
       style={{ background: bg, minHeight: "100svh" }}
     >
-      <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16 py-20 flex flex-col justify-center">
+      <div className="relative z-10 w-full px-4 sm:px-10 lg:px-16 py-20 flex flex-col justify-center">
 
         {/* Overline */}
         <motion.p
